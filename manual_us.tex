@@ -12,6 +12,23 @@
 \usepackage{libertine} % or any other font package
 %\newcommand*\quotefont{\fontfamily{LinuxLibertineT-LF}} % selects Libertine as the quote font
 
+\usepackage{tikz}
+\usetikzlibrary{shadows}
+
+\newcommand*\keystroke[1]{%
+  \tikz[baseline=(key.base)]
+    \node[%
+      draw,
+      fill=white,
+      drop shadow={shadow xshift=0.25ex,shadow yshift=-0.25ex,fill=black,opacity=0.75},
+      rectangle,
+      rounded corners=1pt,
+      inner sep=1.5pt,
+      line width=0.5pt,
+      font=\scriptsize%\sffamily
+    ](key) {#1\strut}
+  ;
+}
 
 \usepackage{fullpage}
 
@@ -44,27 +61,7 @@ special greeting or a preference for yellow hats.
 \end{table}
 
 Please bear in mind that your character starts in Illarion unskilled. He or she cannot be an experienced crafter or warrior from the very beginning\footnote{Especially for players with less experience with roleplaying games, the following archetypes are useful: A servant or maid, recently thrown out of service due to any minor delinquency or a crafter or mercenary in apprenticeship on walk.}.
-Give your counterpart a chance for reaction instead of forcing him or her into a situation. Don't pull her on her sleeve, \emph{try} to pull instead. A good role player will know how wo react properly.
-
-Play in a way that everybody has fun with the game as well.
-
-Don't force anybody to do something the player behind the character doesn't want to do. Especially thievery or robberies are difficult to play. It requires at least two persons having 
-fun with. 
-
-It is much more difficult to play a villain compared to a normal character. At least you need to 
-agree that there finally will be a punishment he or she deserves. 
-
-Don't let bluff yourself. Behind a grumpy dwarf, bloodthirsty orc or insensible mage is a friend 
-you may steal horses with. 
-
-New in game? \\
-Ask game masters or player if there is something you don't know!
-Chat with us in game, in our IRC chat or via our forum. 
-\\
-
-You think you don't know how to role play? \\
-Everybody has been a beginner anytime. 
-Nobody is perfect. 
+Give your counterpart a chance for reaction instead of forcing him or her into a situation. Don't pull her on her sleeve, \emph{try} to pull instead. A good role player will know how wo react properly. This especially holds for thievery or robberies, which makes playing villains rather difficult and requires some experience with role playing.
 
 You may find a larger role play advice as well as background stories on our web page. 
 
@@ -87,11 +84,12 @@ Galmair's colors are black and yellow, its emblem shows a winged pig.
 \paragraph{Runewick}
 Runewick is a sea town in the south east of Illarion and was founded by halflings and elves.
 It is the town of knowledge, scholars and their students can find enough libraries around. 
-It is ruled by Archmage Elvaine Morgan 
+It is ruled by Archmage Elvaine Morgan.
 
 Runewick's colors are blue and silver and the emblem shows a double headed eagle.
 
 \subsection{Races}
+There are five different playable races in Illarion which you can chose. They differ not only in the looks, but also in their behaviour, their preferences and their physical and mental abilities (attributes).
 \paragraph{Humans}
 \paragraph{Elves}
 \paragraph{Dwarves}
@@ -108,7 +106,7 @@ Meanings
 \section{Install the client and log in}
 
 \chapter{Controls}
-\section{Moving}
+\section{Moving around}
 You can move your character (walk or run) across the map by mouse or by keyboard. 
 The character follows the mouse pointer whenever the left mouse button is pressed and held down. Mostly, he or she will 
 avoid obstacles automatically. 
@@ -117,29 +115,28 @@ to that tile.
 To exactly move your character try using the keyboard:
 \begin{table}[h]
 \begin{tabular}{ l p{14.5cm}}
-W, A, S, D & Main directions \\
-Arrow keys & Main directions. Intermediate directions are possible using 2 keys together  \\
-Numpad & Main and intermediate directions \\
-ALT and arrow key & Character turns without walking \\
-ALT GR and arrow key & Character runs 
+\keystroke{W}, \keystroke A, \keystroke S, \keystroke D & Main directions \\
+\keystroke{$\uparrow$}, \keystroke{$\downarrow$}, \keystroke{$\leftarrow$}, \keystroke{$\rightarrow$} & Main directions. Diagonal directions are possible using 2 keys simultanuously  \\
+Numpad & Main and diagonal directions \\
+\keystroke{Alt} + arrow key & Your character turns in place \\
+\keystroke{AltGr} + arrow key & Your character will run into the desired direction 
 \end{tabular}
 \end{table}
 
-Beware: Your character can't run if he or she is overloaded (a heavy load slows you 
-down). 
-Some keyboard combinations could be used by your system alternatively 
-(e.g. Alt Gr and up arrow turns the screen upside down)
+Beware: Your character can't run if he or she is overloaded (``A heavy load slows you 
+down''). 
+Eventually, some keyboard keys are used by your operating system already (e.g. Alt Gr and up arrow turns the screen upside down)
 
-\section{Talking/Chat}
+\section{Talking/Chatting}
 Illarion emphasizes real roleplay. The basic interaction with other players as well as with NPCs 
-takes place in the chat mode. The RETURN key switches the chat mode on and off.
+takes place in the chat mode. The \keystroke{Return} key switches the chat mode on and off.
 
 There are several different chat modes which can be enabled by typing \# and some command in front of your text:
 \begin{table}[h]
 \begin{tabular}{ l p{14.5cm}}
 \#me & Character descriptions. 
 You show unaudible emotions or descriptions of your character. The text is displayed in yellow. 
-e.g.  \#me laughs; \#me stinks as if he came out of a cesspit \\
+e.g.  ``\#me laughs'' becomes ``Paul laughs'', ``\#me stinks'' becomes ``Paul stinks'' \\
 \#w & Whispering. Your words can be heard to the next but one tile. Whispered text is shown in Grey. \\
 \#s & Shout. 
 Your voice can be heard over a long distance. The text will be displayed in red. \\
@@ -148,6 +145,20 @@ You use this to indicate that it is not your character talking but the player be
 is displayed in double brackets in grey. Only characters standing close by can hear this kind of comments.
 \end{tabular}
 \end{table}
+
+\subsection{Languages}
+There are six different languages that are spoken in Illarion. Everyone knows the common language, but the race specific languages are spoken and understood by the respective races only\footnote{The technical implementation of this feature is not yet finished. Currently, anyone can see everyones spoken text, independently of the language spoken.}. To switch the language your character is talking, use:
+\begin{table}[h]
+\begin{tabular}{ l l}
+!lcommon & Common language \\
+!ldwarf & Dwarf language \\
+!lelf & Elf language \\
+!lhalfling & Halfling language \\
+!lhuman & Human language \\
+!llizard & Lizard language
+\end{tabular}
+\end{table}
+
 
 \section{Use}
 \section{Fight}
